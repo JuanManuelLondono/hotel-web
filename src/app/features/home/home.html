@@ -1,1 +1,16 @@
-<p>home works!</p>
+@if (hotelData.info(); as info) {
+<section class="hero">
+    <h1>{{ info.name }}</h1>
+    <p>{{ info.slogan }}</p>
+</section>
+
+<section class="amenities">
+    @for (amenity of info.amenities; track amenity.label) {
+    <app-amenity-item [icon]="amenity.icon" [label]="amenity.label" />
+    }
+</section>
+
+<section class="address">
+    <p>{{ info.address }}</p>
+</section>
+}

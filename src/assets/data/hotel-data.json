@@ -1,0 +1,37 @@
+{
+  "info": {
+    "name": "Hotel Las Palmas",
+    "slogan": "Tu descanso frente al mar",
+    "description": "Un hotel boutique ubicado a pasos de la playa...",
+    "address": "Calle 10 #5-30, Armenia, Quindío",
+    "phoneWhatsapp": "573001234567",
+    "heroImages": [
+      "https://res.cloudinary.com/tu-cuenta/image/upload/v1/hotel/hero1.jpg",
+      "https://res.cloudinary.com/tu-cuenta/image/upload/v1/hotel/hero2.jpg"
+    ],
+    "amenities": [
+      { "icon": "wifi", "label": "Wi-Fi gratis" },
+      { "icon": "pool", "label": "Piscina" },
+      { "icon": "local_parking", "label": "Parqueadero" },
+      { "icon": "restaurant", "label": "Restaurante" }
+    ]
+  },
+  "rooms": [
+    {
+      "id": 1,
+      "name": "Habitación Estándar",
+      "description": "Cómoda habitación con cama doble y baño privado.",
+      "capacity": 2,
+      "pricePerNight": 180000,
+      "coverImage": "https://res.cloudinary.com/tu-cuenta/image/upload/v1/hotel/room1-cover.jpg",
+      "gallery": [
+        "https://res.cloudinary.com/tu-cuenta/image/upload/v1/hotel/room1-1.jpg",
+        "https://res.cloudinary.com/tu-cuenta/image/upload/v1/hotel/room1-2.jpg"
+      ],
+      "amenities": [
+        { "icon": "ac_unit", "label": "Aire acondicionado" },
+        { "icon": "tv", "label": "TV por cable" }
+      ]
+    }
+  ]
+}

@@ -1,9 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, inject, input, computed } from '@angular/core';
+import { HotelData } from '../../../core/services/hotel-data';
+import { AmenityItem } from '../../../shared/amenity-item/amenity-item';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-room-detail',
-  imports: [],
+  imports: [AmenityItem, CurrencyPipe],
   templateUrl: './room-detail.html',
-  styleUrl: './room-detail.scss',
+  styleUrl: './room-detail.scss'
 })
-export class RoomDetail {}
+export class RoomDetail {
+  private hotelData = inject(HotelData);
+
+  id = input.required<number>();
+
+  // signal derivado: busca la habitación cuyo id coincida
+  room = computed(() =>
+    this.hotelData.rooms().find(r => r.id === this.id())
+  );
+}

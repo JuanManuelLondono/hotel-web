@@ -1,1 +1,15 @@
-<p>room-list works!</p>
+<section class="room-list">
+  @for (room of hotelData.rooms(); track room.id) {
+    <a class="room-card" [routerLink]="['/habitaciones', room.id]">
+      <img [src]="room.coverImage" [alt]="room.name" />
+
+      <div class="room-card-body">
+        <h3>{{ room.name }}</h3>
+        <p>{{ room.description }}</p>
+        <span class="price">{{ room.pricePerNight | currency:'COP':'symbol':'1.0-0' }}</span>
+      </div>
+    </a>
+  } @empty {
+    <p>No hay habitaciones disponibles por el momento.</p>
+  }
+</section>

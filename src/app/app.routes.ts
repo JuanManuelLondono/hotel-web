@@ -5,6 +5,6 @@ import { RoomDetail } from './features/rooms/room-detail/room-detail';
 
 export const routes: Routes = [
     {path: '', component: Home},
-    {path: '', component: RoomList},
-    {path: '', component: RoomDetail},
+    {path: 'habitaciones', component: RoomList},
+    {path: 'habitaciones/:id', component: RoomDetail},
 ];

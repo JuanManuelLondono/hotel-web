@@ -1,1 +1,24 @@
-<p>room-detail works!</p>
+@if (room(); as r) {
+  <section class="room-detail">
+    <img [src]="r.coverImage" [alt]="r.name" class="cover" />
+
+    <h1>{{ r.name }}</h1>
+    <p>{{ r.description }}</p>
+    <p>Capacidad: {{ r.capacity }} personas</p>
+    <p class="price">{{ r.pricePerNight | currency:'COP':'symbol':'1.0-0' }} / noche</p>
+
+    <div class="gallery">
+      @for (img of r.gallery; track img) {
+        <img [src]="img" [alt]="r.name" />
+      }
+    </div>
+
+    <section class="amenities">
+      @for (amenity of r.amenities; track amenity.label) {
+        <app-amenity-item [icon]="amenity.icon" [label]="amenity.label" />
+      }
+    </section>
+  </section>
+} @else {
+  <p>Habitación no encontrada.</p>
+}
