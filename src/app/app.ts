@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { WhatsappButton } from './shared/whatsapp-button/whatsapp-button';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, WhatsappButton],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
