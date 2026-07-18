@@ -11,7 +11,7 @@ interface HotelJson {
 @Service()
 export class HotelData {
     // httpResource pide el JSON y expone un signal con el resultado
-    private resource = httpResource<HotelJson>(() => '/assets/data/hotel-data.json');
+    private resource = httpResource<HotelJson>(() => './data/hotel-data.json');
 
     // signals derivados
     info = () => this.resource.value()?.info;

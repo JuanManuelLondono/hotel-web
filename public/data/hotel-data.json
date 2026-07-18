@@ -6,9 +6,9 @@
     "address": "Calle 10 #5-30, Armenia, Quindío",
     "phoneWhatsapp": "573001234567",
     "heroImages": [
-      "hotel/home/hotel_lobby",
-      "hotel/home/hotel_lobby2",
-      "hotel/home/hotel_lobby3"
+      "hotel_lobby1",
+      "hotel_lobby2",
+      "hotel_lobby3"
     ],
     "amenities": [
       { "icon": "wifi", "label": "Wi-Fi gratis" },
@@ -24,11 +24,11 @@
       "description": "Cómoda habitación con cama doble y baño privado.",
       "capacity": 2,
       "pricePerNight": 180000,
-      "coverImage": "hotel/rooms/room1/room1-1",
+      "coverImage": "room1-1",
       "gallery": [
-        "hotel/rooms/room1/room1-1",
-        "hotel/rooms/room1/room1-2",
-        "hotel/rooms/room1/room1-3"
+        "room1-1",
+        "room1-2",
+        "room1-3"
       ],
       "amenities": [
         { "icon": "ac_unit", "label": "Aire acondicionado" },
@@ -43,9 +43,9 @@
       "pricePerNight": 220000,
       "coverImage": "hotel/rooms/room2/room2-1",
       "gallery": [
-        "hotel/rooms/room2/room2-1",
-        "hotel/rooms/room2/room2-2",
-        "hotel/rooms/room2/room2-3"
+        "room2-1",
+        "room2-2",
+        "room2-3"
       ],
       "amenities": [
         { "icon": "ac_unit", "label": "Aire acondicionado" },
@@ -61,9 +61,9 @@
       "pricePerNight": 350000,
       "coverImage": "hotel/rooms/room3/room3-1",
       "gallery": [
-        "hotel/rooms/room3/room3-1",
-        "hotel/rooms/room3/room3-2",
-        "hotel/rooms/room3/room3-3"
+        "room3-1",
+        "room3-2",
+        "room3-3"
       ],
       "amenities": [
         { "icon": "ac_unit", "label": "Aire acondicionado" },

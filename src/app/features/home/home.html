@@ -1,16 +1,39 @@
 @if (hotelData.info(); as info) {
-<section class="hero">
-    <h1>{{ info.name }}</h1>
-    <p>{{ info.slogan }}</p>
-</section>
-
-<section class="amenities">
-    @for (amenity of info.amenities; track amenity.label) {
-    <app-amenity-item [icon]="amenity.icon" [label]="amenity.label" />
+  <div class="hero">
+    @if (currentImage(); as img) {
+      <img [src]="img | cloudinaryImage:1200" [alt]="info.name" class="hero-image" />
     }
-</section>
 
-<section class="address">
+    <div class="hero-overlay">
+      <h1>{{ info.name }}</h1>
+      <p>{{ info.slogan }}</p>
+    </div>
+
+    @if (totalImages() > 1) {
+      <div class="hero-dots">
+        @for (img of info.heroImages; track img; let i = $index) {
+          <button
+            class="dot"
+            [class.active]="i === activeIndexValue()"
+            (click)="goTo(i)"
+            [attr.aria-label]="'Ver imagen ' + (i + 1)">
+          </button>
+        }
+      </div>
+    }
+  </div>
+
+  <section class="description">
+    <p>{{ info.description }}</p>
+  </section>
+
+  <section class="amenities">
+    @for (amenity of info.amenities; track amenity.label) {
+      <app-amenity-item [icon]="amenity.icon" [label]="amenity.label" />
+    }
+  </section>
+
+  <section class="address">
     <p>{{ info.address }}</p>
-</section>
+  </section>
 }
