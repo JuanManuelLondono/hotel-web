@@ -16,6 +16,6 @@ export class RoomDetail {
 
   // signal derivado: busca la habitación cuyo id coincida
   room = computed(() =>
-    this.hotelData.rooms().find(r => r.id === this.id())
+    this.hotelData.rooms().find(r => r.id === Number(this.id()))
   );
 }

@@ -41,7 +41,7 @@
       "description": "Amplia habitación con dos camas individuales, ideal para grupos o familias.",
       "capacity": 3,
       "pricePerNight": 220000,
-      "coverImage": "hotel/rooms/room2/room2-1",
+      "coverImage": "room2-1",
       "gallery": [
         "room2-1",
         "room2-2",
@@ -59,7 +59,7 @@
       "description": "Suite con sala de estar separada, vista al mar y balcón privado.",
       "capacity": 4,
       "pricePerNight": 350000,
-      "coverImage": "hotel/rooms/room3/room3-1",
+      "coverImage": "room3-1",
       "gallery": [
         "room3-1",
         "room3-2",
