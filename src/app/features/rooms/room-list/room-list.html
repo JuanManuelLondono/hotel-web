@@ -1,7 +1,7 @@
 <section class="room-list">
   @for (room of hotelData.rooms(); track room.id) {
     <a class="room-card" [routerLink]="['/habitaciones', room.id]">
-      <img [src]="room.coverImage" [alt]="room.name" />
+      <img [src]="room.coverImage | cloudinaryImage:400" [alt]="room.name" loading="lazy" />
 
       <div class="room-card-body">
         <h3>{{ room.name }}</h3>

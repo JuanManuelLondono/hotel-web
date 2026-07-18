@@ -1,24 +1,24 @@
 @if (room(); as r) {
-  <section class="room-detail">
-    <img [src]="r.coverImage" [alt]="r.name" class="cover" />
+<section class="room-detail">
+  <img [src]="r.coverImage | cloudinaryImage:1200" [alt]="r.name" class="cover" />
 
-    <h1>{{ r.name }}</h1>
-    <p>{{ r.description }}</p>
-    <p>Capacidad: {{ r.capacity }} personas</p>
-    <p class="price">{{ r.pricePerNight | currency:'COP':'symbol':'1.0-0' }} / noche</p>
+  <h1>{{ r.name }}</h1>
+  <p>{{ r.description }}</p>
+  <p>Capacidad: {{ r.capacity }} personas</p>
+  <p class="price">{{ r.pricePerNight | currency:'COP':'symbol':'1.0-0' }} / noche</p>
 
-    <div class="gallery">
-      @for (img of r.gallery; track img) {
-        <img [src]="img" [alt]="r.name" />
-      }
-    </div>
+  <div class="gallery">
+    @for (img of r.gallery; track img) {
+    <img [src]="img | cloudinaryImage:300" [alt]="r.name" loading="lazy" />
+    }
+  </div>
 
-    <section class="amenities">
-      @for (amenity of r.amenities; track amenity.label) {
-        <app-amenity-item [icon]="amenity.icon" [label]="amenity.label" />
-      }
-    </section>
+  <section class="amenities">
+    @for (amenity of r.amenities; track amenity.label) {
+    <app-amenity-item [icon]="amenity.icon" [label]="amenity.label" />
+    }
   </section>
+</section>
 } @else {
-  <p>Habitación no encontrada.</p>
+<p>Habitación no encontrada.</p>
 }

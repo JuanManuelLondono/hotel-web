@@ -6,8 +6,9 @@
     "address": "Calle 10 #5-30, Armenia, Quindío",
     "phoneWhatsapp": "573001234567",
     "heroImages": [
-      "https://res.cloudinary.com/tu-cuenta/image/upload/v1/hotel/hero1.jpg",
-      "https://res.cloudinary.com/tu-cuenta/image/upload/v1/hotel/hero2.jpg"
+      "hotel/home/hotel_lobby",
+      "hotel/home/hotel_lobby2",
+      "hotel/home/hotel_lobby3"
     ],
     "amenities": [
       { "icon": "wifi", "label": "Wi-Fi gratis" },
@@ -23,14 +24,52 @@
       "description": "Cómoda habitación con cama doble y baño privado.",
       "capacity": 2,
       "pricePerNight": 180000,
-      "coverImage": "https://res.cloudinary.com/tu-cuenta/image/upload/v1/hotel/room1-cover.jpg",
+      "coverImage": "hotel/rooms/room1/room1-1",
       "gallery": [
-        "https://res.cloudinary.com/tu-cuenta/image/upload/v1/hotel/room1-1.jpg",
-        "https://res.cloudinary.com/tu-cuenta/image/upload/v1/hotel/room1-2.jpg"
+        "hotel/rooms/room1/room1-1",
+        "hotel/rooms/room1/room1-2",
+        "hotel/rooms/room1/room1-3"
       ],
       "amenities": [
         { "icon": "ac_unit", "label": "Aire acondicionado" },
         { "icon": "tv", "label": "TV por cable" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Habitación Doble",
+      "description": "Amplia habitación con dos camas individuales, ideal para grupos o familias.",
+      "capacity": 3,
+      "pricePerNight": 220000,
+      "coverImage": "hotel/rooms/room2/room2-1",
+      "gallery": [
+        "hotel/rooms/room2/room2-1",
+        "hotel/rooms/room2/room2-2",
+        "hotel/rooms/room2/room2-3"
+      ],
+      "amenities": [
+        { "icon": "ac_unit", "label": "Aire acondicionado" },
+        { "icon": "tv", "label": "TV por cable" },
+        { "icon": "wifi", "label": "Wi-Fi gratis" }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Suite Junior",
+      "description": "Suite con sala de estar separada, vista al mar y balcón privado.",
+      "capacity": 4,
+      "pricePerNight": 350000,
+      "coverImage": "hotel/rooms/room3/room3-1",
+      "gallery": [
+        "hotel/rooms/room3/room3-1",
+        "hotel/rooms/room3/room3-2",
+        "hotel/rooms/room3/room3-3"
+      ],
+      "amenities": [
+        { "icon": "ac_unit", "label": "Aire acondicionado" },
+        { "icon": "tv", "label": "TV por cable" },
+        { "icon": "balcony", "label": "Balcón privado" },
+        { "icon": "wifi", "label": "Wi-Fi gratis" }
       ]
     }
   ]
