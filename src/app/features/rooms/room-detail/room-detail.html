@@ -1,13 +1,14 @@
 @if (room(); as r) {
-  <div class="modal-backdrop" (click)="close()">
-    <div class="modal-panel" (click)="$event.stopPropagation()">
-      <div class="modal-header">
-        <h2>{{ r.name }}</h2>
-        <button class="close-btn" (click)="close()" aria-label="Cerrar">
-          <span class="material-symbols-outlined">close</span>
-        </button>
-      </div>
+<div class="modal-backdrop" [class.closing]="closing()" (click)="close()">
+  <div class="modal-panel" [class.closing]="closing()" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>{{ r.name }}</h2>
+      <button class="close-btn" (click)="close()" aria-label="Cerrar">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
 
+    <div class="modal-scroll" (scroll)="onScroll($event)">
       <img [src]="r.coverImage | cloudinaryImage:1200" [alt]="r.name" class="cover" />
 
       <div class="modal-body">
@@ -17,16 +18,23 @@
 
         <div class="gallery">
           @for (img of r.gallery; track img) {
-            <img [src]="img | cloudinaryImage:300" [alt]="r.name" loading="lazy" />
+          <img [src]="img | cloudinaryImage:300" [alt]="r.name" loading="lazy" />
           }
         </div>
 
         <div class="amenities">
           @for (amenity of r.amenities; track amenity.label) {
-            <app-amenity-item [icon]="amenity.icon" [label]="amenity.label" />
+          <app-amenity-item [icon]="amenity.icon" [label]="amenity.label" />
           }
         </div>
       </div>
+
+
+      <div class="scroll-hint" [class.hide]="scrolled()">
+        <span class="material-symbols-outlined">keyboard_arrow_down</span>
+      </div>
+
     </div>
   </div>
+</div>
 }

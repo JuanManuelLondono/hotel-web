@@ -32,8 +32,21 @@
       ],
       "amenities": [
         { "icon": "ac_unit", "label": "Aire acondicionado" },
-        { "icon": "tv", "label": "TV por cable" }
-      ]
+        { "icon": "tv", "label": "TV por cable" },
+        { "icon": "wifi", "label": "Wi-Fi gratis" },
+        { "icon": "bathtub", "label": "Baño privado" },
+        { "icon": "dry_cleaning", "label": "Servicio de lavandería" },
+        { "icon": "coffee_maker", "label": "Cafetera" },
+        { "icon": "kitchen", "label": "Minibar" },
+        { "icon": "bed", "label": "Ropa de cama premium" },
+        { "icon": "balcony", "label": "Balcón privado" },
+        { "icon": "room_service", "label": "Servicio a la habitación" },
+        { "icon": "iron", "label": "Plancha disponible" },
+        { "icon": "lock", "label": "Caja fuerte" },
+        { "icon": "desk", "label": "Escritorio de trabajo" },
+        { "icon": "smoke_free", "label": "Habitación libre de humo" },
+        { "icon": "elevator", "label": "Acceso a ascensor" }
+]
     },
     {
       "id": 2,
