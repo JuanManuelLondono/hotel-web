@@ -3,6 +3,7 @@ import { HotelData } from '../../../core/services/hotel-data';
 import { AmenityItem } from '../../../shared/amenity-item/amenity-item';
 import { CurrencyPipe } from '@angular/common';
 import { CloudinaryImagePipe } from '../../../shared/pipes/cloudinary-image-pipe';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-room-detail',
   imports: [AmenityItem, CurrencyPipe, CloudinaryImagePipe],
@@ -11,11 +12,18 @@ import { CloudinaryImagePipe } from '../../../shared/pipes/cloudinary-image-pipe
 })
 export class RoomDetail {
   private hotelData = inject(HotelData);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute)
 
   id = input.required<number>();
+  room = computed(() => {
+    const numericId = Number(this.id());
+    return this.hotelData.rooms().find(r => r.id === numericId);
+  });
 
-  // signal derivado: busca la habitación cuyo id coincida
-  room = computed(() =>
-    this.hotelData.rooms().find(r => r.id === Number(this.id()))
-  );
+  close(): void {
+    this.router.navigate([{ outlets: { modal: null } }], {
+      relativeTo: this.route.parent
+    });
+  }
 }

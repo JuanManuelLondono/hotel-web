@@ -1,24 +1,32 @@
 @if (room(); as r) {
-<section class="room-detail">
-  <img [src]="r.coverImage | cloudinaryImage:1200" [alt]="r.name" class="cover" />
+  <div class="modal-backdrop" (click)="close()">
+    <div class="modal-panel" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2>{{ r.name }}</h2>
+        <button class="close-btn" (click)="close()" aria-label="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
 
-  <h1>{{ r.name }}</h1>
-  <p>{{ r.description }}</p>
-  <p>Capacidad: {{ r.capacity }} personas</p>
-  <p class="price">{{ r.pricePerNight | currency:'COP':'symbol':'1.0-0' }} / noche</p>
+      <img [src]="r.coverImage | cloudinaryImage:1200" [alt]="r.name" class="cover" />
 
-  <div class="gallery">
-    @for (img of r.gallery; track img) {
-    <img [src]="img | cloudinaryImage:300" [alt]="r.name" loading="lazy" />
-    }
+      <div class="modal-body">
+        <p>{{ r.description }}</p>
+        <p>Capacidad: {{ r.capacity }} personas</p>
+        <p class="price">{{ r.pricePerNight | currency:'COP':'symbol':'1.0-0' }} / noche</p>
+
+        <div class="gallery">
+          @for (img of r.gallery; track img) {
+            <img [src]="img | cloudinaryImage:300" [alt]="r.name" loading="lazy" />
+          }
+        </div>
+
+        <div class="amenities">
+          @for (amenity of r.amenities; track amenity.label) {
+            <app-amenity-item [icon]="amenity.icon" [label]="amenity.label" />
+          }
+        </div>
+      </div>
+    </div>
   </div>
-
-  <section class="amenities">
-    @for (amenity of r.amenities; track amenity.label) {
-    <app-amenity-item [icon]="amenity.icon" [label]="amenity.label" />
-    }
-  </section>
-</section>
-} @else {
-<p>Habitación no encontrada.</p>
 }
