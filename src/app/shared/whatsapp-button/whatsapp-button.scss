@@ -5,16 +5,14 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background-color: #25D366; // verde oficial de WhatsApp
+  background-color: #25D366;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 14px rgba(43, 33, 24, 0.25);
   z-index: 1000;
   text-decoration: none;
 
-  .material-symbols-outlined {
-    font-size: 28px;
-  }
+  .material-symbols-outlined { font-size: 28px; }
 }

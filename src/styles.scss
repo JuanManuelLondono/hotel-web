@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,400&family=Public+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --color-bg: #F7F2E7;
+  --color-bg-alt: #FDFBF6;
+  --color-ink: #2B2118;
+  --color-ink-soft: #6B5A48;
+  --color-forest: #3F6B3E;
+  --color-forest-dark: #2C4C2B;
+  --color-terracotta: #A63D2F;
+  --color-gold: #C08A28;
+  --color-line: #DDD3BE;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Public Sans', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 0.5rem;
+  color: var(--color-ink);
+}
+
+h1 { font-size: clamp(2rem, 4vw, 3rem); }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.25rem; }
+
+p { margin: 0 0 1rem; color: var(--color-ink-soft); }
+
+a { color: var(--color-forest); }

@@ -1,9 +1,12 @@
 .hero {
   position: relative;
-  height: 320px;
-  border-radius: 12px;
+  height: 420px;
+  margin: 1.5rem;
+  border-radius: 4px;
   overflow: hidden;
-  background: #e5e5e5;
+  border: 8px solid var(--color-bg-alt);
+  box-shadow: 0 6px 20px rgba(43, 33, 24, 0.18);
+  background: var(--color-line);
 
   .hero-image {
     width: 100%;
@@ -13,38 +16,57 @@
 
   .hero-overlay {
     position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 1.5rem;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent);
+    left: 0; right: 0; bottom: 0;
+    padding: 2rem;
+    background: linear-gradient(to top, rgba(43, 33, 24, 0.75), transparent);
 
-    h1, p {
-      color: white;
-      margin: 0;
+    h1 { color: #FDFBF6; margin-bottom: 4px; }
+    p {
+      color: #FDFBF6;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.1rem;
+      opacity: 0.95;
     }
   }
 
   .hero-dots {
     position: absolute;
-    left: 50%;
-    bottom: 12px;
+    left: 50%; bottom: 16px;
     transform: translateX(-50%);
-    display: flex;
-    gap: 6px;
+    display: flex; gap: 8px;
 
     .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.5);
-      border: none;
-      padding: 0;
-      cursor: pointer;
-
-      &.active {
-        background: white;
-      }
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(253, 251, 246, 0.5);
+      border: none; padding: 0; cursor: pointer;
+      &.active { background: var(--color-gold); }
     }
   }
+}
+
+.description {
+  max-width: 620px;
+  margin: 0 auto 2rem;
+  padding: 0 1.5rem;
+  text-align: center;
+
+  p { font-size: 1.05rem; }
+}
+
+.amenities {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0 1.5rem 2.5rem;
+}
+
+.address {
+  text-align: center;
+  padding: 1.5rem;
+  border-top: 1px solid var(--color-line);
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--color-ink-soft);
 }
