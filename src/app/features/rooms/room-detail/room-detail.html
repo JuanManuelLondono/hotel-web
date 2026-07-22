@@ -1,40 +1,46 @@
 @if (room(); as r) {
-<div class="modal-backdrop" [class.closing]="closing()" (click)="close()">
-  <div class="modal-panel" [class.closing]="closing()" (click)="$event.stopPropagation()">
-    <div class="modal-header">
-      <h2>{{ r.name }}</h2>
-      <button class="close-btn" (click)="close()" aria-label="Cerrar">
-        <span class="material-symbols-outlined">close</span>
-      </button>
-    </div>
+  <div class="modal-backdrop" [class.closing]="closing()" (click)="close()">
+    <div class="modal-panel" [class.closing]="closing()" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2>{{ r.name }}</h2>
+        <button class="close-btn" (click)="close()" aria-label="Cerrar">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
 
-    <div class="modal-scroll" (scroll)="onScroll($event)">
-      <img [src]="r.coverImage | cloudinaryImage:1200" [alt]="r.name" class="cover" />
+      <div class="modal-scroll" (scroll)="onScroll($event)">
+        <div class="cover-carousel">
+          @if (currentGalleryImage(); as img) {
+            <img [src]="img | cloudinaryImage:1400" [alt]="r.name" class="cover" />
+          }
 
-      <div class="modal-body">
-        <p>{{ r.description }}</p>
-        <p>Capacidad: {{ r.capacity }} personas</p>
-        <p class="price">{{ r.pricePerNight | currency:'COP':'symbol':'1.0-0' }} / noche</p>
-
-        <div class="gallery">
-          @for (img of r.gallery; track img) {
-          <img [src]="img | cloudinaryImage:300" [alt]="r.name" loading="lazy" />
+          @if (r.gallery.length > 1) {
+            <button class="carousel-arrow prev" (click)="prevImage()" aria-label="Foto anterior">
+              <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <button class="carousel-arrow next" (click)="nextImage()" aria-label="Foto siguiente">
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+            <div class="carousel-counter">{{ galleryIndex() + 1 }} / {{ r.gallery.length }}</div>
           }
         </div>
 
-        <div class="amenities">
-          @for (amenity of r.amenities; track amenity.label) {
-          <app-amenity-item [icon]="amenity.icon" [label]="amenity.label" />
-          }
+        <div class="modal-body">
+          <p>{{ r.description }}</p>
+          <p>Capacidad: {{ r.capacity }} personas</p>
+          <p class="price">{{ r.pricePerNight | currency:'COP':'symbol':'1.0-0' }} / noche</p>
+
+          <div class="amenities">
+            @for (amenity of r.amenities; track amenity.label) {
+              <app-amenity-item [icon]="amenity.icon" [label]="amenity.label" />
+            }
+          </div>
+        </div>
+
+        <div class="scroll-hint" [class.hide]="scrolled()">
+          <span class="material-symbols-outlined">keyboard_arrow_down</span>
         </div>
       </div>
-
-
-      <div class="scroll-hint" [class.hide]="scrolled()">
-        <span class="material-symbols-outlined">keyboard_arrow_down</span>
-      </div>
-
     </div>
   </div>
-</div>
 }
