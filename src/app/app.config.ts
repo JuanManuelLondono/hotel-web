@@ -4,6 +4,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import localeEsCo from '@angular/common/locales/es-CO';
 import { routes } from './app.routes';
+import { provideClientHydration } from '@angular/platform-browser';
 
 registerLocaleData(localeEsCo, 'es-CO');
 
@@ -11,5 +12,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes, withComponentInputBinding()),
     { provide: LOCALE_ID, useValue: 'es-CO' },
+    provideClientHydration(),
   ],
 };
