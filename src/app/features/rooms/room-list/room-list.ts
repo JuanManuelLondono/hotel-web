@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, effect } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { HotelData } from '../../../core/services/hotel-data';
 import { CurrencyPipe } from '@angular/common';
 import { CloudinaryImagePipe } from '../../../shared/pipes/cloudinary-image-pipe';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-room-list',
@@ -12,4 +13,20 @@ import { CloudinaryImagePipe } from '../../../shared/pipes/cloudinary-image-pipe
 })
 export class RoomList {
   hotelData = inject(HotelData);
+
+  private titleService = inject(Title);
+  private metaService = inject(Meta);
+
+  constructor() {
+    effect(() => {
+      const info = this.hotelData.info();
+      if (!info) return;
+
+      this.titleService.setTitle(`Habitaciones — ${info.name}`);
+      this.metaService.updateTag({
+        name: 'description',
+        content: `Conoce las habitaciones de ${info.name}: comodidad, precios y disponibilidad. Contáctanos directo por WhatsApp para reservar.`
+      });
+    });
+  }
 }
