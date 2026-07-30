@@ -3,6 +3,7 @@ import { HotelData } from '../../core/services/hotel-data';
 import { AmenityItem } from '../../shared/amenity-item/amenity-item';
 import { CloudinaryImagePipe } from '../../shared/pipes/cloudinary-image-pipe';
 import { Title, Meta } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/core';
 @Component({
   selector: 'app-home',
   imports: [AmenityItem, CloudinaryImagePipe],
@@ -14,6 +15,8 @@ export class Home  implements OnInit, OnDestroy{
 
   private titleService = inject(Title);
   private metaService = inject(Meta);
+
+  private document = inject(DOCUMENT);
 
   private activeIndex = signal(0);
   private intervalId?: ReturnType<typeof setInterval>;
@@ -37,9 +40,41 @@ export class Home  implements OnInit, OnDestroy{
         name: 'description',
         content: info.description
       });
+
+      this.setStructuredData(info);
     });
   }
 
+  private setStructuredData(info: NonNullable<ReturnType<typeof this.hotelData.info>>): void {
+    const existing = this.document.getElementById('structured-data');
+    existing?.remove();
+
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'Hotel',
+      name: info.name,
+      description: info.description,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: info.address,
+        addressLocality: 'Armenia',
+        addressRegion: 'Quindío',
+        addressCountry: 'CO'
+      },
+      telephone: `+${info.phoneWhatsapp}`,
+      amenityFeature: info.amenities.map(a => ({
+        '@type': 'LocationFeatureSpecification',
+        name: a.label,
+        value: true
+      }))
+    };
+
+    const script = this.document.createElement('script');
+    script.id = 'structured-data';
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(schema);
+    this.document.head.appendChild(script);
+  }
 
   ngOnInit(): void {
     this.intervalId = setInterval(() => this.next(), 4000);
