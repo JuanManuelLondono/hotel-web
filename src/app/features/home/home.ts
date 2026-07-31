@@ -4,13 +4,15 @@ import { AmenityItem } from '../../shared/amenity-item/amenity-item';
 import { CloudinaryImagePipe } from '../../shared/pipes/cloudinary-image-pipe';
 import { Title, Meta } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/core';
+import { environment } from '../../../environments/environment';
+import { GalleryImage } from '../../models/room';
 @Component({
   selector: 'app-home',
   imports: [AmenityItem, CloudinaryImagePipe],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-export class Home  implements OnInit, OnDestroy{
+export class Home implements OnInit, OnDestroy {
   hotelData = inject(HotelData);
 
   private titleService = inject(Title);
@@ -36,13 +38,20 @@ export class Home  implements OnInit, OnDestroy{
       if (!info) return;
 
       this.titleService.setTitle(`${info.name} — ${info.slogan}`);
-      this.metaService.updateTag({
-        name: 'description',
-        content: info.description
-      });
-
+      this.metaService.updateTag({ name: 'description', content: info.description });
       this.setStructuredData(info);
+      this.setCanonical('/');
     });
+  }
+
+  private setCanonical(path: string): void {
+    let link = this.document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!link) {
+      link = this.document.createElement('link');
+      link.setAttribute('rel', 'canonical');
+      this.document.head.appendChild(link);
+    }
+    link.setAttribute('href', `${environment.siteUrl}${path}`);
   }
 
   private setStructuredData(info: NonNullable<ReturnType<typeof this.hotelData.info>>): void {

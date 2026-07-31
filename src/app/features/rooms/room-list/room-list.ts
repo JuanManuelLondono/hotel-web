@@ -4,6 +4,8 @@ import { HotelData } from '../../../core/services/hotel-data';
 import { CurrencyPipe } from '@angular/common';
 import { CloudinaryImagePipe } from '../../../shared/pipes/cloudinary-image-pipe';
 import { Title, Meta } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-room-list',
@@ -17,6 +19,8 @@ export class RoomList {
   private titleService = inject(Title);
   private metaService = inject(Meta);
 
+  private document = inject(DOCUMENT);
+
   constructor() {
     effect(() => {
       const info = this.hotelData.info();
@@ -29,4 +33,14 @@ export class RoomList {
       });
     });
   }
+
+  private setCanonical(path: string): void {
+  let link = this.document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+  if (!link) {
+    link = this.document.createElement('link');
+    link.setAttribute('rel', 'canonical');
+    this.document.head.appendChild(link);
+  }
+  link.setAttribute('href', `${environment.siteUrl}${path}`);
+}
 }
