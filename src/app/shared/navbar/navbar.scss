@@ -8,6 +8,7 @@
 
   .brand {
     font-family: var(--font-display);
+    font-style: italic;
     font-size: 1.4rem;
     font-weight: 600;
     text-decoration: none;
@@ -21,18 +22,20 @@
     a {
       text-decoration: none;
       color: var(--color-ink-soft);
-      font-size: 0.95rem;
-      font-weight: 500;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       padding-bottom: 4px;
       border-bottom: 2px solid transparent;
       transition: border-color 0.2s, color 0.2s;
 
       &:hover {
-        color: var(--color-forest);
+        color: var(--color-forest-dark);
       }
 
       &.active {
-        color: var(--color-forest-dark);
+        color: var(--color-terracotta);
         border-color: var(--color-terracotta);
       }
     }

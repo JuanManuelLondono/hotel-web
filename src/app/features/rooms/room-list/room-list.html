@@ -1,11 +1,19 @@
 <section class="room-list">
   @for (room of hotelData.rooms(); track room.id) {
     <a class="room-card" [routerLink]="[{ outlets: { modal: [room.id] } }]">
+      <div class="ticket-edge"></div>
       <img [src]="room.coverImage | cloudinaryImage:400" [alt]="room.name" loading="lazy" />
       <div class="room-card-body">
-        <h3>{{ room.name }}</h3>
-        <p>{{ room.description }}</p>
-        <span class="price">{{ room.pricePerNight | currency:'COP':'symbol':'1.0-0' }}</span>
+        <div class="room-card-header">
+          <div class="room-card-text">
+            <h3>{{ room.name }}</h3>
+            <p>{{ room.description }}</p>
+          </div>
+          <div class="price-stamp">
+            <span class="stamp-currency">COP</span>
+            <span class="stamp-value">{{ room.pricePerNight / 1000 | number:'1.0-0' }}K</span>
+          </div>
+        </div>
       </div>
     </a>
   } @empty {

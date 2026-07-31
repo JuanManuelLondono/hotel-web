@@ -1,18 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,400&family=Public+Sans:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 :root {
-  --color-bg: #F7F2E7;
-  --color-bg-alt: #FDFBF6;
+  --color-bg: #FFFFFF;
+  --color-bg-alt: #FBF9F3;
   --color-ink: #2B2118;
   --color-ink-soft: #6B5A48;
-  --color-forest: #3F6B3E;
-  --color-forest-dark: #2C4C2B;
+  --color-forest: #7C8F5C;
+  --color-forest-dark: #5C6B45;
   --color-terracotta: #A63D2F;
   --color-gold: #C08A28;
-  --color-line: #DDD3BE;
+  --color-line: #EDE8DC;
 
-  --font-display: 'Fraunces', serif;
-  --font-body: 'Public Sans', sans-serif;
+  --font-display: 'Newsreader', serif;
+  --font-body: 'Work Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
 }
 
 * { box-sizing: border-box; }
@@ -41,4 +42,4 @@ h3 { font-size: 1.25rem; }
 
 p { margin: 0 0 1rem; color: var(--color-ink-soft); }
 
-a { color: var(--color-forest); }
+a { color: var(--color-forest-dark); }

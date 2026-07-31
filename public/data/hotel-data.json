@@ -52,23 +52,11 @@
         }
       ],
       "amenities": [
-        {
-          "icon": "ac_unit",
-          "label": "Aire acondicionado"
-        },
-        {
-          "icon": "tv",
-          "label": "TV por cable"
-        },
-        {
-          "icon": "wifi",
-          "label": "Wi-Fi gratis"
-        },
-        {
-          "icon": "bathtub",
-          "label": "Baño privado"
-        }
-      ]
+  { "icon": "ac_unit", "label": "Aire acondicionado" },
+  { "icon": "tv", "label": "TV por cable" },
+  { "icon": "wifi", "label": "Wi-Fi gratis" },
+  { "icon": "bathtub", "label": "Baño privado" }
+]
     },
     {
       "id": 2,
@@ -92,24 +80,19 @@
         } 
       ],
       "amenities": [
-        {
-          "icon": "ac_unit",
-          "label": "Aire acondicionado"
-        },
-        {
-          "icon": "tv",
-          "label": "TV por cable"
-        },
-        {
-          "icon": "wifi",
-          "label": "Wi-Fi gratis"
-        }
-      ]
+  { "icon": "ac_unit", "label": "Aire acondicionado" },
+  { "icon": "tv", "label": "TV por cable" },
+  { "icon": "wifi", "label": "Wi-Fi gratis" },
+  { "icon": "bathtub", "label": "Baño privado" },
+  { "icon": "coffee_maker", "label": "Cafetera" },
+  { "icon": "kitchen", "label": "Minibar" },
+  { "icon": "desk", "label": "Escritorio de trabajo" }
+]
     },
     {
       "id": 3,
       "name": "Suite Junior",
-      "description": "Suite con sala de estar separada, vista al mar y balcón privado.",
+      "description": "Suite con sala de estar separada y balcón privado.",
       "capacity": 4,
       "pricePerNight": 350000,
       "coverImage": "room3-1",
@@ -128,23 +111,19 @@
         }
       ],
       "amenities": [
-        {
-          "icon": "ac_unit",
-          "label": "Aire acondicionado"
-        },
-        {
-          "icon": "tv",
-          "label": "TV por cable"
-        },
-        {
-          "icon": "balcony",
-          "label": "Balcón privado"
-        },
-        {
-          "icon": "wifi",
-          "label": "Wi-Fi gratis"
-        }
-      ]
+  { "icon": "ac_unit", "label": "Aire acondicionado" },
+  { "icon": "tv", "label": "TV por cable" },
+  { "icon": "wifi", "label": "Wi-Fi gratis" },
+  { "icon": "bathtub", "label": "Baño privado" },
+  { "icon": "coffee_maker", "label": "Cafetera" },
+  { "icon": "kitchen", "label": "Minibar" },
+  { "icon": "desk", "label": "Escritorio de trabajo" },
+  { "icon": "balcony", "label": "Balcón privado" },
+  { "icon": "room_service", "label": "Servicio a la habitación" },
+  { "icon": "bed", "label": "Ropa de cama premium" },
+  { "icon": "lock", "label": "Caja fuerte" },
+  { "icon": "dry_cleaning", "label": "Servicio de lavandería" }
+]
     }
   ]
 }

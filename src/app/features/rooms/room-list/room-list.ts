@@ -1,7 +1,7 @@
 import { Component, inject, effect } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { HotelData } from '../../../core/services/hotel-data';
-import { CurrencyPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { CloudinaryImagePipe } from '../../../shared/pipes/cloudinary-image-pipe';
 import { Title, Meta } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/core';
@@ -9,7 +9,7 @@ import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-room-list',
-  imports: [RouterLink, RouterOutlet, CurrencyPipe, CloudinaryImagePipe],
+  imports: [RouterLink, RouterOutlet, DecimalPipe, CloudinaryImagePipe],
   templateUrl: './room-list.html',
   styleUrl: './room-list.scss'
 })
