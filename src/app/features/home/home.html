@@ -1,36 +1,59 @@
 @if (hotelData.info(); as info) {
-  <div class="hero">
-    @if (currentImage(); as img) {
-      <img [src]="img | cloudinaryImage:1200" [alt]="info.name" class="hero-image" />
-    }
-
-    <div class="hero-overlay">
+  <section class="hero-split">
+    <div class="hero-text">
+      <span class="eyebrow">ARMENIA · QUINDÍO</span>
       <h1>{{ info.name }}</h1>
-      <p>{{ info.slogan }}</p>
-    </div>
-
-    @if (totalImages() > 1) {
-      <div class="hero-dots">
-        @for (img of info.heroImages; track img; let i = $index) {
-          <button
-            class="dot"
-            [class.active]="i === activeIndexValue()"
-            (click)="goTo(i)"
-            [attr.aria-label]="'Ver imagen ' + (i + 1)">
-          </button>
+      <p class="slogan">{{ info.slogan }}</p>
+      <div class="hero-cta">
+        <a class="btn-primary" routerLink="/habitaciones">Ver habitaciones</a>
+        @if (whatsappUrl(); as url) {
+          <a class="btn-secondary" [href]="url" target="_blank" rel="noopener noreferrer">Reservar</a>
         }
       </div>
-    }
-  </div>
-
-  <section class="description">
-    <p>{{ info.description }}</p>
+    </div>
+    <div class="hero-image">
+      <img [src]="info.heroImage | cloudinaryImage:900" [alt]="info.name" />
+    </div>
   </section>
+
+  <section class="about">
+    <span class="eyebrow">QUIÉNES SOMOS</span>
+    <h2>{{ info.aboutTitle }}</h2>
+    <p>{{ info.aboutText }}</p>
+  </section>
+
+  @for (block of info.aboutBlocks; track block.title; let i = $index) {
+    <section class="feature-block" [class.reverse]="i % 2 === 1">
+      <div class="feature-image">
+        <img [src]="block.imagePublicId | cloudinaryImage:700" [alt]="block.imageAlt" loading="lazy" />
+      </div>
+      <div class="feature-text">
+        <h2>{{ block.title }}</h2>
+        <p>{{ block.text }}</p>
+      </div>
+    </section>
+  }
 
   <section class="amenities">
     @for (amenity of info.amenities; track amenity.label) {
       <app-amenity-item [icon]="amenity.icon" [label]="amenity.label" />
     }
+  </section>
+
+  <section class="rooms-preview">
+    <h2>Habitaciones</h2>
+    <div class="rooms-preview-grid">
+      @for (room of featuredRooms(); track room.id) {
+        <a class="room-mini-card" routerLink="/habitaciones">
+          <img [src]="room.coverImage | cloudinaryImage:400" [alt]="room.name" loading="lazy" />
+          <div class="room-mini-body">
+            <h3>{{ room.name }}</h3>
+            <span class="price-tag">{{ room.pricePerNight / 1000 }}K COP</span>
+          </div>
+        </a>
+      }
+    </div>
+    <a class="link-all-rooms" routerLink="/habitaciones">Ver todas las habitaciones →</a>
   </section>
 
   <section class="address">

@@ -1,14 +1,26 @@
 {
   "info": {
-    "name": "Hotel Las Palmas",
+    "name": "Hotel Mirador del Café",
     "slogan": "Tu descanso en el corazón del café",
-    "description": "Un hotel boutique ubicado en el centro de Armenia para que tengas al alcance toda la ciudad...",
+    "description": "Hotel boutique en el centro de Armenia, Quindío. Habitaciones cómodas, comodidades completas y fácil acceso a los principales puntos de la ciudad.",
     "address": "Calle 10 #5-30, Armenia, Quindío",
     "phoneWhatsapp": "573127617494",
-    "heroImages": [
-      "hotel_lobby1",
-      "hotel_lobby2",
-      "hotel_lobby3"
+    "heroImage": "hotel_lobby1",
+    "aboutTitle": "Un lugar para llegar y sentirse en casa",
+    "aboutText": "Nacimos en el corazón de Armenia con una idea simple: que hospedarse en el Eje Cafetero se sienta tan cálido como una taza recién servida. Cada habitación está pensada para el viajero que busca comodidad real, no solo una cama — y cada rincón del hotel tiene algo del paisaje cafetero que nos rodea.",
+    "aboutBlocks": [
+      {
+        "title": "Ubicación en el corazón de la ciudad",
+        "text": "A pasos del centro de Armenia, con acceso fácil a restaurantes, comercio y las principales vías hacia los pueblos del Quindío. Ideal tanto para quienes viajan por trabajo como para quienes vienen a conocer el Eje Cafetero.",
+        "imagePublicId": "hotel_lobby2",
+        "imageAlt": "Fachada del hotel en el centro de Armenia"
+      },
+      {
+        "title": "Comodidad pensada para descansar de verdad",
+        "text": "Habitaciones cómodas, wifi de verdad rápido, y un equipo dispuesto a ayudarte a planear tu siguiente parada en la región. Los pequeños detalles son los que hacen la diferencia después de un día completo explorando.",
+        "imagePublicId": "hotel_lobby3",
+        "imageAlt": "Interior de una de las habitaciones del hotel"
+      }
     ],
     "amenities": [
       {
@@ -52,11 +64,23 @@
         }
       ],
       "amenities": [
-  { "icon": "ac_unit", "label": "Aire acondicionado" },
-  { "icon": "tv", "label": "TV por cable" },
-  { "icon": "wifi", "label": "Wi-Fi gratis" },
-  { "icon": "bathtub", "label": "Baño privado" }
-]
+        {
+          "icon": "ac_unit",
+          "label": "Aire acondicionado"
+        },
+        {
+          "icon": "tv",
+          "label": "TV por cable"
+        },
+        {
+          "icon": "wifi",
+          "label": "Wi-Fi gratis"
+        },
+        {
+          "icon": "bathtub",
+          "label": "Baño privado"
+        }
+      ]
     },
     {
       "id": 2,
@@ -67,27 +91,48 @@
       "coverImage": "room2-1",
       "gallery": [
         {
-          "publicId": "room2-1", 
+          "publicId": "room2-1",
           "alt": "Cama doble junto a la ventana con vista al campo"
         },
-          {
+        {
           "publicId": "room2-2",
           "alt": "Vista general de la habitación con closet y TV"
-          },
+        },
         {
           "publicId": "room2-3",
           "alt": "Baño privado con ducha y lavamanos"
-        } 
+        }
       ],
       "amenities": [
-  { "icon": "ac_unit", "label": "Aire acondicionado" },
-  { "icon": "tv", "label": "TV por cable" },
-  { "icon": "wifi", "label": "Wi-Fi gratis" },
-  { "icon": "bathtub", "label": "Baño privado" },
-  { "icon": "coffee_maker", "label": "Cafetera" },
-  { "icon": "kitchen", "label": "Minibar" },
-  { "icon": "desk", "label": "Escritorio de trabajo" }
-]
+        {
+          "icon": "ac_unit",
+          "label": "Aire acondicionado"
+        },
+        {
+          "icon": "tv",
+          "label": "TV por cable"
+        },
+        {
+          "icon": "wifi",
+          "label": "Wi-Fi gratis"
+        },
+        {
+          "icon": "bathtub",
+          "label": "Baño privado"
+        },
+        {
+          "icon": "coffee_maker",
+          "label": "Cafetera"
+        },
+        {
+          "icon": "kitchen",
+          "label": "Minibar"
+        },
+        {
+          "icon": "desk",
+          "label": "Escritorio de trabajo"
+        }
+      ]
     },
     {
       "id": 3,
@@ -98,7 +143,7 @@
       "coverImage": "room3-1",
       "gallery": [
         {
-          "publicId":"room3-1",
+          "publicId": "room3-1",
           "alt": "Cama doble junto a la ventana con vista al campo"
         },
         {
@@ -111,19 +156,55 @@
         }
       ],
       "amenities": [
-  { "icon": "ac_unit", "label": "Aire acondicionado" },
-  { "icon": "tv", "label": "TV por cable" },
-  { "icon": "wifi", "label": "Wi-Fi gratis" },
-  { "icon": "bathtub", "label": "Baño privado" },
-  { "icon": "coffee_maker", "label": "Cafetera" },
-  { "icon": "kitchen", "label": "Minibar" },
-  { "icon": "desk", "label": "Escritorio de trabajo" },
-  { "icon": "balcony", "label": "Balcón privado" },
-  { "icon": "room_service", "label": "Servicio a la habitación" },
-  { "icon": "bed", "label": "Ropa de cama premium" },
-  { "icon": "lock", "label": "Caja fuerte" },
-  { "icon": "dry_cleaning", "label": "Servicio de lavandería" }
-]
+        {
+          "icon": "ac_unit",
+          "label": "Aire acondicionado"
+        },
+        {
+          "icon": "tv",
+          "label": "TV por cable"
+        },
+        {
+          "icon": "wifi",
+          "label": "Wi-Fi gratis"
+        },
+        {
+          "icon": "bathtub",
+          "label": "Baño privado"
+        },
+        {
+          "icon": "coffee_maker",
+          "label": "Cafetera"
+        },
+        {
+          "icon": "kitchen",
+          "label": "Minibar"
+        },
+        {
+          "icon": "desk",
+          "label": "Escritorio de trabajo"
+        },
+        {
+          "icon": "balcony",
+          "label": "Balcón privado"
+        },
+        {
+          "icon": "room_service",
+          "label": "Servicio a la habitación"
+        },
+        {
+          "icon": "bed",
+          "label": "Ropa de cama premium"
+        },
+        {
+          "icon": "lock",
+          "label": "Caja fuerte"
+        },
+        {
+          "icon": "dry_cleaning",
+          "label": "Servicio de lavandería"
+        }
+      ]
     }
   ]
 }

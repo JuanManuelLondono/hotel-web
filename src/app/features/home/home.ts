@@ -1,36 +1,32 @@
-import { Component, inject, signal, computed, effect, OnInit, OnDestroy } from '@angular/core';
+import { Component, inject, computed, effect } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { Title, Meta } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
 import { HotelData } from '../../core/services/hotel-data';
 import { AmenityItem } from '../../shared/amenity-item/amenity-item';
 import { CloudinaryImagePipe } from '../../shared/pipes/cloudinary-image-pipe';
-import { Title, Meta } from '@angular/platform-browser';
-import { DOCUMENT } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { GalleryImage } from '../../models/room';
+
 @Component({
   selector: 'app-home',
-  imports: [AmenityItem, CloudinaryImagePipe],
+  imports: [AmenityItem, CloudinaryImagePipe, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-export class Home implements OnInit, OnDestroy {
+export class Home {
   hotelData = inject(HotelData);
-
   private titleService = inject(Title);
   private metaService = inject(Meta);
-
   private document = inject(DOCUMENT);
 
-  private activeIndex = signal(0);
-  private intervalId?: ReturnType<typeof setInterval>;
+  featuredRooms = computed(() => this.hotelData.rooms().slice(0, 3));
 
-  // imagen actualmente visible, recalculada cuando cambia el índice o llegan los datos
-  currentImage = computed(() => {
-    const images = this.hotelData.info()?.heroImages ?? [];
-    return images[this.activeIndex()];
+  whatsappUrl = computed(() => {
+    const phone = this.hotelData.info()?.phoneWhatsapp;
+    if (!phone) return null;
+    const text = encodeURIComponent('Hola, quisiera más información sobre disponibilidad y reservas.');
+    return `https://wa.me/${phone}?text=${text}`;
   });
-
-  totalImages = computed(() => this.hotelData.info()?.heroImages?.length ?? 0);
-  activeIndexValue = computed(() => this.activeIndex());
 
   constructor() {
     effect(() => {
@@ -42,16 +38,6 @@ export class Home implements OnInit, OnDestroy {
       this.setStructuredData(info);
       this.setCanonical('/');
     });
-  }
-
-  private setCanonical(path: string): void {
-    let link = this.document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-    if (!link) {
-      link = this.document.createElement('link');
-      link.setAttribute('rel', 'canonical');
-      this.document.head.appendChild(link);
-    }
-    link.setAttribute('href', `${environment.siteUrl}${path}`);
   }
 
   private setStructuredData(info: NonNullable<ReturnType<typeof this.hotelData.info>>): void {
@@ -85,21 +71,13 @@ export class Home implements OnInit, OnDestroy {
     this.document.head.appendChild(script);
   }
 
-  ngOnInit(): void {
-    this.intervalId = setInterval(() => this.next(), 4000);
-  }
-
-  ngOnDestroy(): void {
-    clearInterval(this.intervalId);
-  }
-
-  next(): void {
-    const total = this.totalImages();
-    if (total === 0) return;
-    this.activeIndex.update(i => (i + 1) % total);
-  }
-
-  goTo(index: number): void {
-    this.activeIndex.set(index);
+  private setCanonical(path: string): void {
+    let link = this.document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!link) {
+      link = this.document.createElement('link');
+      link.setAttribute('rel', 'canonical');
+      this.document.head.appendChild(link);
+    }
+    link.setAttribute('href', `${environment.siteUrl}${path}`);
   }
 }
