@@ -13,6 +13,7 @@ export interface HotelInfo {
   description: string;
   address: string;
   phoneWhatsapp: string;
+  email: string;
   heroImage: string;
   aboutTitle: string;
   aboutText: string;

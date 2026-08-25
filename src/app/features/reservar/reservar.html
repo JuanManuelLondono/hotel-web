@@ -1,0 +1,59 @@
+@if (hotelData.info(); as info) {
+  <section class="reservar-page">
+    <span class="eyebrow">RESERVAR</span>
+    <h1>Escríbenos para reservar</h1>
+    <p class="intro">Elige cómo prefieres contactarnos — por WhatsApp para una respuesta rápida, o por correo si prefieres dejar todos los detalles por escrito.</p>
+
+    <div class="reservar-options">
+      <div class="option-card">
+        <h2>Por WhatsApp</h2>
+        <p>Te respondemos directo, ideal si tienes preguntas rápidas sobre disponibilidad.</p>
+        @if (whatsappUrl(); as url) {
+          <a class="btn-primary" [href]="url" target="_blank" rel="noopener noreferrer">Escribir por WhatsApp</a>
+        }
+      </div>
+
+      <div class="option-card">
+        <h2>Por correo electrónico</h2>
+        <p>Completa el formulario y se abrirá tu cliente de correo con el mensaje ya redactado.</p>
+
+        <form class="email-form">
+          <label>
+            Nombre
+            <input type="text" name="guestName" [(ngModel)]="guestName" placeholder="Tu nombre completo" />
+          </label>
+
+          <div class="form-row">
+            <label>
+              Check-in
+              <input type="date" name="checkIn" [(ngModel)]="checkIn" />
+            </label>
+            <label>
+              Check-out
+              <input type="date" name="checkOut" [(ngModel)]="checkOut" />
+            </label>
+          </div>
+
+          <label>
+            Habitación de interés
+            <select name="selectedRoomId" [(ngModel)]="selectedRoomId">
+              <option [ngValue]="null">Sin preferencia</option>
+              @for (room of hotelData.rooms(); track room.id) {
+                <option [ngValue]="room.id">{{ room.name }}</option>
+              }
+            </select>
+          </label>
+
+          <label>
+            Mensaje
+            <textarea name="message" [(ngModel)]="message" rows="4" placeholder="Cuéntanos qué necesitas..."></textarea>
+          </label>
+
+          @if (mailtoUrl(); as url) {
+            <a class="btn-secondary" [href]="url">Abrir correo con este mensaje</a>
+          }
+        </form>
+      </div>
+    </div>
+  </section>
+}

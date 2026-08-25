@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { Home } from './features/home/home';
 import { RoomList } from './features/rooms/room-list/room-list';
 import { RoomDetail } from './features/rooms/room-detail/room-detail';
+import { Reservar } from './features/reservar/reservar';
+
 
 export const routes: Routes = [
     { path: '', component: Home },
@@ -11,5 +13,6 @@ export const routes: Routes = [
         children: [
             { path: ':id', component: RoomDetail, outlet: 'modal' }
         ]
-    }
+    },
+    { path: 'reservar', component: Reservar }
 ];
