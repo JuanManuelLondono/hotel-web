@@ -4,8 +4,8 @@
   gap: 6px;
   padding: 8px 14px;
   border-radius: 999px;
-  background: #F3F6ED;
-  border: 1px solid #DCE5CB;
+  background: var(--color-accent-bg);
+  border: 1px solid var(--color-accent-border);
 
   .material-symbols-outlined {
     font-size: 16px;
