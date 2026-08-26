@@ -21,16 +21,25 @@
           <label>
             Nombre
             <input type="text" name="guestName" [(ngModel)]="guestName" placeholder="Tu nombre completo" />
+            @if (submitted() && !nameValid()) {
+              <span class="field-error">Ingresa tu nombre.</span>
+            }
           </label>
 
           <div class="form-row">
             <label>
               Check-in
-              <input type="date" name="checkIn" [(ngModel)]="checkIn" />
+              <input type="date" name="checkIn" [(ngModel)]="checkIn" [min]="today()" />
+              @if (submitted() && !checkInValid()) {
+                <span class="field-error">Elige una fecha de check-in válida.</span>
+              }
             </label>
             <label>
               Check-out
-              <input type="date" name="checkOut" [(ngModel)]="checkOut" />
+              <input type="date" name="checkOut" [(ngModel)]="checkOut" [min]="checkIn() || today()" />
+              @if (submitted() && !checkOutValid()) {
+                <span class="field-error">Debe ser posterior al check-in.</span>
+              }
             </label>
           </div>
 
@@ -47,11 +56,12 @@
           <label>
             Mensaje
             <textarea name="message" [(ngModel)]="message" rows="4" placeholder="Cuéntanos qué necesitas..."></textarea>
+            @if (submitted() && !messageValid()) {
+              <span class="field-error">Cuéntanos brevemente qué necesitas.</span>
+            }
           </label>
 
-          @if (mailtoUrl(); as url) {
-            <a class="btn-secondary" [href]="url">Abrir correo con este mensaje</a>
-          }
+          <a class="btn-email" [href]="mailtoUrl()" (click)="onSubmitEmail($event)">Abrir correo con este mensaje</a>
         </form>
       </div>
     </div>

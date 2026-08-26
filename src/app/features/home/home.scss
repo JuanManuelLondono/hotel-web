@@ -39,7 +39,7 @@
       flex-wrap: wrap;
     }
 
-    .btn-primary, .btn-secondary {
+    .btn-primary, .btn-secondary, .btn-reservar {
       font-family: var(--font-mono);
       font-size: 0.8rem;
       letter-spacing: 0.06em;
@@ -53,6 +53,11 @@
     }
 
     .btn-primary {
+      background: var(--color-terracotta);
+      color: white;
+    }
+
+    .btn-reservar{
       background: var(--color-terracotta);
       color: white;
     }
@@ -214,3 +219,4 @@
   font-style: italic;
   color: var(--color-ink-soft);
 }
+

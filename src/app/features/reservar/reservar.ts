@@ -23,6 +23,19 @@ export class Reservar {
   selectedRoomId = signal<number | null>(null);
   message = signal('');
 
+  submitted = signal(false);
+
+  today = computed(() => new Date().toISOString().split('T')[0]);
+
+  nameValid = computed(() => this.guestName().trim().length > 0);
+  checkInValid = computed(() => this.checkIn() !== '' && this.checkIn() >= this.today());
+  checkOutValid = computed(() => this.checkOut() !== '' && this.checkOut() > this.checkIn());
+  messageValid = computed(() => this.message().trim().length > 0);
+
+  formValid = computed(() =>
+    this.nameValid() && this.checkInValid() && this.checkOutValid() && this.messageValid()
+  );
+
   whatsappUrl = computed(() => {
     const phone = this.hotelData.info()?.phoneWhatsapp;
     if (!phone) return null;
@@ -36,11 +49,9 @@ export class Reservar {
 
     const room = this.hotelData.rooms().find(r => r.id === this.selectedRoomId());
     const roomLine = room ? `Habitación de interés: ${room.name}\n` : '';
-    const datesLine = (this.checkIn() || this.checkOut())
-      ? `Fechas: ${this.checkIn() || '(sin definir)'} a ${this.checkOut() || '(sin definir)'}\n`
-      : '';
+    const datesLine = `Fechas: ${this.checkIn()} a ${this.checkOut()}\n`;
 
-    const subject = `Solicitud de reserva — ${this.guestName() || 'Sin nombre'}`;
+    const subject = `Solicitud de reserva — ${this.guestName()}`;
     const body =
       `Nombre: ${this.guestName()}\n` +
       roomLine +
@@ -49,6 +60,13 @@ export class Reservar {
 
     return `mailto:${info.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
+
+  onSubmitEmail(event: Event): void {
+    this.submitted.set(true);
+    if (!this.formValid()) {
+      event.preventDefault();
+    }
+  }
 
   constructor() {
     effect(() => {
