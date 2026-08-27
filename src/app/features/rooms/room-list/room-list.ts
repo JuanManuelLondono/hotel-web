@@ -26,6 +26,7 @@ export class RoomList {
       const info = this.hotelData.info();
       if (!info) return;
 
+      this.setOpenGraph(info, '/habitaciones');
       this.titleService.setTitle(`Habitaciones — ${info.name}`);
       this.metaService.updateTag({
         name: 'description',
@@ -35,12 +36,33 @@ export class RoomList {
   }
 
   private setCanonical(path: string): void {
-  let link = this.document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-  if (!link) {
-    link = this.document.createElement('link');
-    link.setAttribute('rel', 'canonical');
-    this.document.head.appendChild(link);
+    let link = this.document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!link) {
+      link = this.document.createElement('link');
+      link.setAttribute('rel', 'canonical');
+      this.document.head.appendChild(link);
+    }
+    link.setAttribute('href', `${environment.siteUrl}${path}`);
   }
-  link.setAttribute('href', `${environment.siteUrl}${path}`);
-}
+
+  private setOpenGraph(info: NonNullable<ReturnType<typeof this.hotelData.info>>, path: string): void {
+    const firstRoom = this.hotelData.rooms()[0];
+    const imagePublicId = firstRoom?.coverImage ?? info.heroImage;
+    const imageUrl = `https://res.cloudinary.com/${environment.cloudinaryCloudName}/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/${imagePublicId}`;
+    const pageUrl = `${environment.siteUrl}${path}`;
+    const title = `Habitaciones — ${info.name}`;
+    const description = `Conoce las habitaciones de ${info.name} y sus precios.`;
+
+    this.metaService.updateTag({ property: 'og:title', content: title });
+    this.metaService.updateTag({ property: 'og:description', content: description });
+    this.metaService.updateTag({ property: 'og:image', content: imageUrl });
+    this.metaService.updateTag({ property: 'og:url', content: pageUrl });
+    this.metaService.updateTag({ property: 'og:type', content: 'website' });
+    this.metaService.updateTag({ property: 'og:site_name', content: info.name });
+
+    this.metaService.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+    this.metaService.updateTag({ name: 'twitter:title', content: title });
+    this.metaService.updateTag({ name: 'twitter:description', content: description });
+    this.metaService.updateTag({ name: 'twitter:image', content: imageUrl });
+  }
 }

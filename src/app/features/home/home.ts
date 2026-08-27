@@ -37,6 +37,7 @@ export class Home {
       this.metaService.updateTag({ name: 'description', content: info.description });
       this.setStructuredData(info);
       this.setCanonical('/');
+      this.setOpenGraph(info, '/');
     });
   }
 
@@ -79,5 +80,25 @@ export class Home {
       this.document.head.appendChild(link);
     }
     link.setAttribute('href', `${environment.siteUrl}${path}`);
+  }
+
+  private setOpenGraph(info: NonNullable<ReturnType<typeof this.hotelData.info>>, path: string): void {
+    const imageUrl = `https://res.cloudinary.com/${environment.cloudinaryCloudName}/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/${info.heroImage}`;
+    const pageUrl = `${environment.siteUrl}${path}`;
+    const shortDescription = info.description.length > 120
+      ? info.description.slice(0, 117) + '...'
+      : info.description;
+
+    this.metaService.updateTag({ property: 'og:title', content: info.name });
+    this.metaService.updateTag({ property: 'og:description', content: shortDescription });
+    this.metaService.updateTag({ property: 'og:image', content: imageUrl });
+    this.metaService.updateTag({ property: 'og:url', content: pageUrl });
+    this.metaService.updateTag({ property: 'og:type', content: 'website' });
+    this.metaService.updateTag({ property: 'og:site_name', content: info.name });
+
+    this.metaService.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+    this.metaService.updateTag({ name: 'twitter:title', content: info.name });
+    this.metaService.updateTag({ name: 'twitter:description', content: shortDescription });
+    this.metaService.updateTag({ name: 'twitter:image', content: imageUrl });
   }
 }

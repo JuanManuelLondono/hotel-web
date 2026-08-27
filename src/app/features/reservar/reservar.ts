@@ -73,6 +73,7 @@ export class Reservar {
       const info = this.hotelData.info();
       if (!info) return;
 
+      this.setOpenGraph(info, '/reservar');
       this.titleService.setTitle(`Reservar — ${info.name}`);
       this.metaService.updateTag({
         name: 'description',
@@ -91,4 +92,24 @@ export class Reservar {
     }
     link.setAttribute('href', `${environment.siteUrl}${path}`);
   }
+
+  private setOpenGraph(info: NonNullable<ReturnType<typeof this.hotelData.info>>, path: string): void {
+    const imageUrl = `https://res.cloudinary.com/${environment.cloudinaryCloudName}/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/${info.heroImage}`;
+    const pageUrl = `${environment.siteUrl}${path}`;
+    const title = `Reservar — ${info.name}`;
+    const description = `Reserva tu habitación en ${info.name} por WhatsApp o correo electrónico.`;
+
+    this.metaService.updateTag({ property: 'og:title', content: title });
+    this.metaService.updateTag({ property: 'og:description', content: description });
+    this.metaService.updateTag({ property: 'og:image', content: imageUrl });
+    this.metaService.updateTag({ property: 'og:url', content: pageUrl });
+    this.metaService.updateTag({ property: 'og:type', content: 'website' });
+    this.metaService.updateTag({ property: 'og:site_name', content: info.name });
+
+    this.metaService.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+    this.metaService.updateTag({ name: 'twitter:title', content: title });
+    this.metaService.updateTag({ name: 'twitter:description', content: description });
+    this.metaService.updateTag({ name: 'twitter:image', content: imageUrl });
+  }
+
 }
